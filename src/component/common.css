@@ -66,7 +66,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 77px;
-   
 }
 
 .search-box button {
@@ -110,6 +109,8 @@ body {
     }
     .header {
         justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto auto;
     }
     .search-box {
         padding: 0px;
@@ -119,7 +120,19 @@ body {
         grid-column-gap: 10px;
     }
     .myul li {
-        width: 105%;
+        width: 100%;
         padding: 5px 0px;
+    }
+    .login {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+    .menu {
+        grid-column: 1/-1;
+    }
+    .img-container {
+        grid-gap: 15px;
+        margin-top: 20px;
+        padding: 0;
     }
 }
