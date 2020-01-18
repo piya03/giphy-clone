@@ -95,3 +95,14 @@ class Giphy extends Component {
 
 
 export default Giphy;
+
+/**
+ * 1. onclick of categories the respective category item should come up
+ * 2. onclick of giphy header title, the [age should reload
+ * 3. On enter when input is in focus shoudl also trigger search
+ * 4. when ever search is active show some loader in the page
+ * 5. There should be a previous and next button in at the bottom of the page.
+ * on click of next the next page results should be shown and and for previous previous page.
+ * 6. The site should be responsive. 
+ *  
+ */

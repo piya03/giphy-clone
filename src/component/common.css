@@ -1,23 +1,26 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #e4bbbb;
 }
+
 .container {
     margin: 0 auto;
     width: 80%;
 }
+
 .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: white;
     margin: 10px 0;
-
 }
+
 .myul {
     display: grid;
     list-style: none;
@@ -25,45 +28,56 @@ body {
     grid-column-gap: 50px;
     font-size: 18px;
 }
+
 .myul li {
     border-bottom: 4px solid #d05895;
     width: 110%;
 }
+
 .myul li a {
     text-decoration: none;
     color: white;
 }
+
 .header .logo {
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 1px;
 }
+
 .login {
     display: flex;
 }
-.login .fa-user{
+
+.login .fa-user {
     background: #515151;
     padding: 10px 15px;
     font-weight: 700;
 }
+
 .login span {
     background: #3e3e3e;
     padding: 10px 15px;
     font-weight: 700;
 }
+
 .search-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 77px;
+   
 }
+
 .search-box button {
+    cursor: pointer;
     width: 10%;
     height: 53px;
     font-size: 30px;
     border: none;
     color: #d05895;
 }
+
 .search-box input {
     width: 90%;
     height: 54px;
@@ -71,17 +85,41 @@ body {
     font-size: 20px;
     font-weight: 700;
 }
+
 .img-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
     padding: 20px 80px;
-
 }
+
 .img-container div {
     height: 300px;
 }
+
 .img-container div img {
     width: 100%;
     height: 100%;
+}
+
+/* //////////media queries///////// */
+
+@media only screen and (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+    .header {
+        justify-content: space-between;
+    }
+    .search-box {
+        padding: 0px;
+    }
+    .myul {
+        grid-template-columns: repeat(3, auto);
+        grid-column-gap: 10px;
+    }
+    .myul li {
+        width: 105%;
+        padding: 5px 0px;
+    }
 }
