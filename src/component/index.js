@@ -7,7 +7,7 @@ class Giphy extends Component {
         super(props);
         this.state = {
             giphyList: {},
-            inputvalue:""
+            inputvalue: ""
         }
     }
     componentDidMount() {
@@ -20,24 +20,32 @@ class Giphy extends Component {
                 giphyList: result
             })
         })
+        document.addEventListener("keydown", this.handleKeyPress);
     }
-    handleChange = (e) => {
-        this.setState({
-            inputvalue : e.target.value
-        })
-    }
-    searchGif = (e) =>{
-      if(this.state.inputvalue){
-        this.fetchGif(this.state.inputvalue)
+
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.handleKeyPress);
 
       }
-      this.setState({
-        inputvalue: ""
-      })
-     
+
+
+    handleChange = (e) => {
+        this.setState({
+            inputvalue: e.target.value
+        })
+    }
+    searchGif = (e) => {
+        if (this.state.inputvalue) {
+            this.fetchGif(this.state.inputvalue)
+
+        }
+        this.setState({
+            inputvalue: ""
+        })
+
     }
 
-    fetchGif = (searchText) =>{
+    fetchGif = (searchText) => {
         fetch(`https://api.giphy.com/v1/gifs/search?q=${searchText}&api_key=G7OcKtjFvrc8jpXSUn9UyB0X6ngzXfw0&limit=10`).then((
             res) => {
             return res.json()
@@ -48,6 +56,37 @@ class Giphy extends Component {
             })
         })
     }
+    // for enter press
+    handleKeyPress = (event) => {
+        if (event.keyCode === 13) {
+            this.fetchGif(this.state.inputvalue)
+            this.setState({
+                inputvalue: ""
+            })
+        }
+
+    }
+
+
+    onClickTabs = (value) => {
+        this.fetchGif(value)
+    }
+    // reactionClick = (e) => {
+    //     this.fetchGif(e.target.innerText)
+    // }
+    // entertainmentClick = (e) => {
+    //     this.fetchGif(e.target.innerText)
+    // }
+    // sportsClick = (e) => {
+    //     this.fetchGif(e.target.innerText)
+    // }
+    // stickersClick = (e) => {
+    //     this.fetchGif(e.target.innerText)
+    // }
+    // artistsClick = (e) => {
+    //     console.log(e.target.innerText, "Aaaaaaaaaaaaaaa")
+    //     this.fetchGif(e.target.innerText)
+    // }
     render() {
         const { giphyList, inputvalue } = this.state
         return (
@@ -59,12 +98,11 @@ class Giphy extends Component {
                     </div>
                     <div className='menu'>
                         <ul className='myul'>
-                            <li><a href="#">Reactions</a></li>
-                            <li><a href="#">Entertainment</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Stickers</a></li>
-                            <li><a href="#">Artists</a></li>
-
+                            <li onClick={() => {this.onClickTabs("Reactions")}}>Reactions</li>
+                            <li onClick={() => {this.onClickTabs("Entertainment")}}>Entertainment</li>
+                            <li onClick={() => {this.onClickTabs("Sports")}}>Sports</li>
+                            <li onClick={() => {this.onClickTabs("Stickers")}}>Stickers</li>
+                            <li onClick={() => {this.onClickTabs("Artists")}}>Artists</li>
                         </ul>
                     </div>
                     <div className='login'>
@@ -76,8 +114,8 @@ class Giphy extends Component {
 
 
                 <div className="search-box">
-                    <input type="text" placeholder="search..." value={inputvalue} onChange={this.handleChange}/>
-                    <button onClick ={this.searchGif}><i class="fa fa-search"></i></button>
+                    <input type="text" placeholder="search..." value={inputvalue} onChange={this.handleChange} />
+                    <button onClick={this.searchGif}><i class="fa fa-search"></i></button>
                 </div>
 
                 <div className="img-container">
@@ -97,12 +135,12 @@ class Giphy extends Component {
 export default Giphy;
 
 /**
- * 1. onclick of categories the respective category item should come up
+ * 1. onclick of categories the respective category item should come up // done
  * 2. onclick of giphy header title, the [age should reload
- * 3. On enter when input is in focus shoudl also trigger search
+ * 3. On enter when input is in focus shoudl also trigger search // done
  * 4. when ever search is active show some loader in the page
  * 5. There should be a previous and next button in at the bottom of the page.
  * on click of next the next page results should be shown and and for previous previous page.
- * 6. The site should be responsive. 
- *  
+ * 6. The site should be responsive. //done
+ *
  */
